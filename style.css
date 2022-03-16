@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: color #f6f7fb;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+
+.container {
+    text-align: center;     /*align everything in container to the center*/
+}
+
+.progress-container {
+    display: flex;  /*display everythiing in container in flex row*/
+    justify-content:space-between;  /* utilise space around in between content*/
+    position: relative;  /*so that we can position everything inside of it absolute*/
+    margin-bottom: 30px; /* space below container*/
+    max-width: 100%;
+    width: 350px;
+}
+
+.progress-container::before { /*faint grey line behind the progress line*/
+    content:''; /* set to empty string and this is require when using before or after also to see grey line*/
+    background-color: #e0e0e0;
+    position: absolute; /*within the progress container which is positioned relative*/
+    top: 50%; /* position 50% vertically from the top*/
+    left: 0;
+    transform: translateY(-50%); /* move up 50% so line sits the middle of vertical axis*/
+    height: 4px;
+    width: 100%; /*because its going to represent the empty line */
+    z-index: -1; /*push line to the back*/
+    transition: 0; /* no transistion because it is just the line behind the progress line*/
+}
+
+.progress { /*progress line*/
+    background-color: #3498db;
+    position: absolute; /*within the progress container which is positioned relative*/
+    top: 50%; /* position 50% vertically from the top*/
+    left: 0;
+    transform: translateY(-50%); /* move up 50% so line sits the middle of vertical axis*/
+    height: 4px;
+    width: 0%; /*because its the starting pint and we are going to start at the begining number 0 */
+    z-index: -1; /*push line to the back*/
+    transition: 0.4secs ease; /* when we click previous or next we want the line to transition in a certain duration*/
+}
+
+.circle {
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%; /* we want this to be round so set to 50% */
+    height: 30px;
+    width: 30px;
+    display: flex; /* centre numbers in circle*/
+    align-items: center; /* centre numbers in circle*/
+    justify-content: center; /* centre numbers in circle*/
+    border:3px solid #e0e0e0; /* same color as the line*/
+    transition: 0.4s ease;  
+}
+
+.circle.active{
+    border-color: #3498db;
+}
+
+.btn {
+    background-color: #3498db;
+    color: #e0e0e0;/* text*/
+    border: 0; /* remove button border*/
+    border-radius: 6px; /*curved button corners*/
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px; /* 8px top and bottom 30px left and right*/
+    margin: 5px;
+    font-size: 14px;
+}
+
+.btn:active  { /* set button scaling effect when active*/
+    transform: scale(0.98); /* effect on button when clicked*/
+}
+
+.btn:focus { 
+    outline: 0;
+}
+
+.btn:disabled { /* styling button when button is disabled*/
+    background-color: #e0e0e0;
+    color: #f6f7fb;
+    cursor: not-allowed; /* when button is disabled we cant click */
+}
+
